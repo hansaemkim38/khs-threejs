@@ -54,23 +54,27 @@ export default function example() {
   scene.add(mesh);
 
   // 그리기
-  const clock = new THREE.Clock();
 
+  let oldTime = Date.now();
   function draw() {
+    const newTime = Date.now();
+    const deltaTime = newTime - oldTime;
+    oldTime = newTime;
+
     // 라디안 값
     // mesh.rotation.x += 0.1;
     // mesh.rotation.y += 0.1;
 
-    // 경과시간
-    const time = clock.getElapsedTime();
+    //시간차
+    // const delta = clock.getDelta();
 
     // mesh.rotation.y += THREE.MathUtils.degToRad(2);
-    mesh.rotation.y = time;
-    mesh.position.y += 0.01;
-    renderer.render(scene, camera);
+    mesh.rotation.y += deltaTime * 0.001;
+    mesh.position.y += deltaTime * 0.001;
     if (mesh.position.y > 3) {
       mesh.position.y = 0;
     }
+    renderer.render(scene, camera);
 
     // window.requestAnimationFrame(draw);
     renderer.setAnimationLoop(draw); // vr이나 ar 컨텐츠를 만들때 꼭 써야함

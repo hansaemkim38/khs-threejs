@@ -61,12 +61,12 @@ export default function example() {
     // mesh.rotation.x += 0.1;
     // mesh.rotation.y += 0.1;
 
-    // 경과시간
-    const time = clock.getElapsedTime();
+    //시간차
+    const delta = clock.getDelta();
 
     // mesh.rotation.y += THREE.MathUtils.degToRad(2);
-    mesh.rotation.y = time;
-    mesh.position.y += 0.01;
+    mesh.rotation.y += delta;
+    mesh.position.y += delta;
     renderer.render(scene, camera);
     if (mesh.position.y > 3) {
       mesh.position.y = 0;
