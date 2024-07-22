@@ -50,8 +50,11 @@ export default function example() {
   const keyController = new KeyController();
 
   function walk() {
-    if (keyController.keys["keyW"]) {
-      controls.moveForward(0.05);
+    if (keyController.keys["KeyW"]) {
+      controls.moveForward(0.02);
+    }
+    if (keyController.keys["KeyD"]) {
+      controls.moveRight(0.02);
     }
   }
 
